@@ -54,6 +54,7 @@ public class StudentPlayerRandomFit extends PylosPlayer{
 		/* always pass */
         game.pass();
 
+
     }
 
     static void shuffleArray(PylosLocation[] ar)

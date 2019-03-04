@@ -12,8 +12,8 @@ public class TestMain {
 
 	public static void main(String[] args) {
 
-		PylosPlayer codes = new PlayerFactoryCodes().getType("C Random Fit").create();
-		PylosPlayer student = new PlayerFactoryStudent().getType("Genetic").create();
+		PylosPlayer codes = new PlayerFactoryCodes().getType("CODeS - Best Fit").create();
+		PylosPlayer student = new PlayerFactoryStudent().getType("Student - Random").create();
 
 		Battle.play(codes, student, 100);
 

@@ -22,8 +22,8 @@ public class Battle {
 		int lightStartLightWin = 0;
 		int lightStartDarkWin = 0;
 		int lightStartDraw = 0;
-		String playerLightClass = playerLight.getClass().getSimpleName();
-		String playerDarkClass = playerDark.getClass().getSimpleName();
+		String playerLightClass = playerLight.getClass().getSimpleName()+"-P1";
+		String playerDarkClass = playerDark.getClass().getSimpleName()+"-P2";
 
 		for (int i = 0; i < runs / 2; i++) {
 			PylosBoard board = new PylosBoard();
@@ -80,19 +80,19 @@ public class Battle {
 
 		System.out.println("");
 		System.out.println("----------------------------");
-		System.out.println(runs / 2 + " games where " + playerLightClass + " starts:");
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) lightStartLightWin / (runs / 2) * 100)) + "% " + playerLightClass);
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) lightStartDarkWin / (runs / 2) * 100)) + "% " + playerDarkClass);
+		System.out.println(runs / 2 + " games where " + playerLightClass + " (Light) "+ " starts:");
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) lightStartLightWin / (runs / 2) * 100)) + "% " + playerLightClass+" Light");
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) lightStartDarkWin / (runs / 2) * 100)) + "% " + playerDarkClass + " Dark");
 		System.out.println(String.format(" * %6s", String.format("%.2f", (double) lightStartDraw / (runs / 2) * 100)) + "% Draw");
 		System.out.println();
-		System.out.println(runs / 2 + " games where " + playerDarkClass + " starts:");
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) darkStartLightWin / (runs / 2) * 100)) + "% " + playerLightClass);
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) darkStartDarkWin / (runs / 2) * 100)) + "% " + playerDarkClass);
+		System.out.println(runs / 2 + " games where " + playerDarkClass +" (Dark) "+ " starts:");
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) darkStartLightWin / (runs / 2) * 100)) + "% " + playerLightClass + " Light");
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) darkStartDarkWin / (runs / 2) * 100)) + "% " + playerDarkClass + " Dark");
 		System.out.println(String.format(" * %6s", String.format("%.2f", (double) darkStartDraw / (runs / 2) * 100)) + "% Draw");
 		System.out.println();
 		System.out.println(runs + " games in total:");
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) totalLightWin / runs * 100)) + "% " + playerLightClass);
-		System.out.println(String.format(" * %6s", String.format("%.2f", (double) totalDarkWin / runs * 100)) + "% " + playerDarkClass);
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) totalLightWin / runs * 100)) + "% " + playerLightClass + " Light");
+		System.out.println(String.format(" * %6s", String.format("%.2f", (double) totalDarkWin / runs * 100)) + "% " + playerDarkClass + " Dark");
 		System.out.println(String.format(" * %6s", String.format("%.2f", (double) totalDraw / runs * 100)) + "% Draw");
 		System.out.println();
 		System.out.println("Time: " + String.format("%.2f", totalPlayTime) + " sec (" + String.format("%.2f", totalPlayTime / runs) + " sec / game)");
