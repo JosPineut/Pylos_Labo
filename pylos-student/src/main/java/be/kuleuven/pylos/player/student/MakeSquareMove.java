@@ -3,7 +3,7 @@ package be.kuleuven.pylos.player.student;
 import be.kuleuven.pylos.game.*;
 import be.kuleuven.pylos.player.PylosPlayer;
 
-public class MakeSquare implements Move{
+public class MakeSquareMove implements Move {
     private PylosLocation bestPlace;
     private int bestScore=100;
 
