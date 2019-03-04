@@ -11,9 +11,11 @@ import java.util.Random;
  */
 public class StudentPlayerBestFit extends PylosPlayer{
 
+
     @Override
     public void doMove(PylosGameIF game, PylosBoard board) {
-
+        RegularMove regularMove = new RegularMove();
+        regularMove.doMove(game, board, this);
     }
 
     @Override
