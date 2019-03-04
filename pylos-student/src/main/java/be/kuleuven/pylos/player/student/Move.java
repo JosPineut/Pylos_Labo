@@ -5,5 +5,5 @@ public interface Move {
     public void doMove();
     public boolean isPossible();
     public int getScore();
-    
+
 }
