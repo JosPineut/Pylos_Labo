@@ -11,7 +11,7 @@ import be.kuleuven.pylos.player.student.StudentPlayerRandomFit;
 public class BattleMain {
 
 	public static void main(String[] args){
-		Battle.play(new StudentPlayerRandomFit(), new PylosPlayerBestFit(), 100);
+		Battle.play(new StudentPlayerRandomFit(), new StudentPlayerRandomFit(), 100);
 	}
 
 }
