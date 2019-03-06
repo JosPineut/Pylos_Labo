@@ -1,7 +1,5 @@
 package be.kuleuven.pylos.gui;
 
-import be.kuleuven.pylos.player.codes.PlayerFactoryCodes;
-import be.kuleuven.pylos.player.student.PlayerFactoryStudent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
