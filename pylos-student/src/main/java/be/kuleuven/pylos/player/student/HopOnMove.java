@@ -5,13 +5,14 @@ import be.kuleuven.pylos.player.PylosPlayer;
 
 public class HopOnMove implements Move {
     private PylosLocation bestPlace;
+    private PylosSphere moveingSphere;
     private int bestScore = 100;
 
     @Override
     public void doMove(PylosGameIF game, PylosBoard board, PylosPlayer player) {
 
         PylosSphere myReserveSphere = board.getReserve(player);
-        game.moveSphere(myReserveSphere, bestPlace);
+        game.moveSphere(moveingSphere, bestPlace);
 
     }
 
@@ -27,15 +28,23 @@ public class HopOnMove implements Move {
 
             if (ps.getInSquare() == 4 && !ps.getTopLocation().isUsed()) {
 
-                possible = true;
-                pl = ps.getTopLocation();
-
-                score = getScore(game, board, player, ps.getTopLocation());
-
-                if (score < bestScore) {
-                    bestScore = score;
-                    bestPlace = pl;
+                for (PylosSphere psph : mySpheres) {
+                    if (!psph.isReserve()) {
+                        if (psph.canMoveTo(ps.getTopLocation())) {
+                            score = getScore(game, board, ps.getTopLocation(), psph, player);
+                            if (score < bestScore) {
+                                bestScore = score;
+                                bestPlace = ps.getTopLocation();
+                                moveingSphere = psph;
+                            }
+                            possible = true;
+                        }
+                    }
                 }
+
+
+
+
             }
         }
 
@@ -44,11 +53,17 @@ public class HopOnMove implements Move {
 
     @Override
     public int getScore(PylosGameIF game, PylosBoard board, PylosPlayer player, PylosLocation pl) {
+        return 0;
+    }
+
+
+    public int getScore(PylosGameIF game, PylosBoard board, PylosLocation pl, PylosSphere ps1, PylosPlayer player) {
 
         int score = 0;
 
-        PylosSphere myReserveSphere = board.getReserve(player);
-        board.move(myReserveSphere, pl);
+        PylosLocation originalLoc = ps1.getLocation();
+
+        board.move(ps1, pl);
 
         PylosSquare[] squares = board.getAllSquares();
         for (PylosSquare ps : squares) {
@@ -57,7 +72,8 @@ public class HopOnMove implements Move {
             }
         }
 
-        board.remove(myReserveSphere);
+        board.moveDown(ps1, originalLoc);
+
         return score;
 
     }

@@ -47,7 +47,7 @@ public class MakeSquareMove implements Move{
         int score=0;
 
         PylosSphere myReserveSphere = board.getReserve(player);
-        board.move(myReserveSphere, pl);
+        board.add(myReserveSphere, pl);
 
         PylosSquare[] squares = board.getAllSquares();
         for(PylosSquare ps:squares){

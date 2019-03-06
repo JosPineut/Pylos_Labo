@@ -6,6 +6,7 @@ import be.kuleuven.pylos.game.PylosLocation;
 import be.kuleuven.pylos.game.PylosSquare;
 import be.kuleuven.pylos.player.PylosPlayer;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -17,10 +18,20 @@ public class StudentPlayerBestFit extends PylosPlayer{
 
     @Override
     public void doMove(PylosGameIF game, PylosBoard board) {
-        RegularMove regularMove = new RegularMove();
-        System.out.println("test");
-        regularMove.doMove(game, board, this);
+        PreventSquareMove p = new PreventSquareMove();
+        MakeSquareMove m = new MakeSquareMove();
+        HopOnMove h = new HopOnMove();
+        RegularMove r = new RegularMove();
 
+        if (p.isPossible(game, board, this)) {
+            p.doMove(game, board, this);
+        } else if (m.isPossible(game, board, this)) {
+            m.doMove(game, board, this);
+        } else if (h.isPossible(game, board, this)) {
+            h.doMove(game, board, this);
+        } else {
+            r.doMove(game, board, this);
+        }
     }
 
     @Override

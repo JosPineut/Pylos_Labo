@@ -12,6 +12,7 @@ public class PreventSquareMove implements Move {
     public void doMove(PylosGameIF game, PylosBoard board, PylosPlayer player) {
 
         PylosSphere myReserveSphere = board.getReserve(player);
+        //System.out.println(bestPlace);
         game.moveSphere(myReserveSphere, bestPlace);
     }
 
@@ -29,7 +30,9 @@ public class PreventSquareMove implements Move {
                     if (!pl.isUsed() && pl.isUsable()) {
                         possible = true;
                         score = getScore(game, board, player, pl);
+                        //System.out.println("onze score is "+score+ " en totaalscore is "+totScore);
                         if (score > totScore) {
+                            // System.out.println(totScore+ " is totale score, nieuwe score is "+score);
                             totScore = score;
                             bestPlace = pl;
                         }
@@ -45,7 +48,7 @@ public class PreventSquareMove implements Move {
     public int getScore(PylosGameIF game, PylosBoard board, PylosPlayer player, PylosLocation pl) {
 
         PylosSphere myReserveSphere = board.getReserve(player);
-        board.move(myReserveSphere, pl);
+        board.add(myReserveSphere, pl);
 
         PylosSquare[] squares = board.getAllSquares();
 
@@ -68,22 +71,22 @@ public class PreventSquareMove implements Move {
             }
         }
 
+        board.remove(myReserveSphere);
+
         if (otherSquares < bestScore[0]) {
             bestScore[0] = otherSquares;
             bestScore[1] = ourSquares;
             bestScore[2] = maxSpheres;
 
-            return totScore++;
+            return (totScore + 1);
         } else if (otherSquares == bestScore[0]) {
             if (ourSquares > bestScore[1]) {
-                return totScore++;
+                return (totScore + 1);
             } else if (maxSpheres > bestScore[2]) {
-                return totScore++;
+                return (totScore + 1);
             }
         }
 
-
-        board.remove(myReserveSphere);
         return 0;
     }
 }
