@@ -11,6 +11,8 @@ public class PreventSquareMove implements Move {
     @Override
     public void doMove(PylosGameIF game, PylosBoard board, PylosPlayer player) {
 
+        PylosSphere myReserveSphere = board.getReserve(player);
+        game.moveSphere(myReserveSphere, bestPlace);
     }
 
     @Override
