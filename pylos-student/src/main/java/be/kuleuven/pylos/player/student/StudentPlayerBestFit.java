@@ -19,7 +19,6 @@ public class StudentPlayerBestFit extends PylosPlayer{
     public void doMove(PylosGameIF game, PylosBoard board) {
         RegularMove regularMove = new RegularMove();
         System.out.println("test");
-
         regularMove.doMove(game, board, this);
 
     }
